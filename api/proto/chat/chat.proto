@@ -1,0 +1,14 @@
+syntax = "proto3";
+package api;
+option go_package = "api/proto/chat";
+service Chat{
+  rpc Create(CreateRequest) returns (CreateResponse);
+}
+
+message CreateRequest{
+  int64 id_sender = 1;
+  int64 id_receiver = 2;
+}
+message CreateResponse{
+  int64 id = 1;
+}
