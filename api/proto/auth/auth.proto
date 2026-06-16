@@ -1,0 +1,15 @@
+syntax = "proto3";
+package api;
+option go_package = "api/proto/auth";
+service Auth{
+  rpc Create(CreateRequest) returns (CreateResponse);
+}
+
+message CreateRequest{
+  string email = 1;
+  string user_name = 2;
+  string user_password = 3;
+}
+message CreateResponse{
+  string jwt_token = 1;
+}
