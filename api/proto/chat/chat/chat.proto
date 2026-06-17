@@ -1,13 +1,13 @@
 syntax = "proto3";
 package api;
 option go_package = "api/proto/chat/chat";
-service ChatService{
-  rpc GetChat(GetChatRequest) returns (GetChatResponse);
-  rpc GetAllChatsByID(GetAllChatsRequest) returns (GetAllChatsResponse);
+service Chat{
+  rpc Get(GetRequest) returns (GetResponse);
+  rpc GetAllByID(GetAllByIDRequest) returns (GetAllByIDResponse);
 }
 
 
-message GetChatRequest{
+message GetRequest{
   repeated int64 user_id = 1;
 }
 message Message{
@@ -15,19 +15,19 @@ message Message{
   string name_sender = 2;
   string message = 3;
 }
-message GetChatResponse{
+message GetResponse{
   bool is_chat = 1;
   int64 id = 2;
   repeated Message history_messages = 3;
 }
 
-message GetAllChatsRequest{
+message GetAllByIDRequest{
   int64 user_id = 1;
 }
 message ChatInfo{
   int64 chat_id = 1;
   string chat_name = 2;
 }
-message GetAllChatsResponse{
+message GetAllByIDResponse{
   repeated ChatInfo chats = 1;
 }
