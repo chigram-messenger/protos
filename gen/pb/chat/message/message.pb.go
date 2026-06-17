@@ -154,8 +154,8 @@ const file_message_proto_rawDesc = "" +
 	"idReceiver\x12\x18\n" +
 	"\amessage\x18\x05 \x01(\tR\amessage\"(\n" +
 	"\x0eCreateResponse\x12\x16\n" +
-	"\x06status\x18\x01 \x01(\bR\x06status2C\n" +
-	"\x0eMessageService\x121\n" +
+	"\x06status\x18\x01 \x01(\bR\x06status2<\n" +
+	"\aMessage\x121\n" +
 	"\x06Create\x12\x12.api.CreateRequest\x1a\x13.api.CreateResponseB\x18Z\x16api/proto/chat/messageb\x06proto3"
 
 var (
@@ -176,8 +176,8 @@ var file_message_proto_goTypes = []any{
 	(*CreateResponse)(nil), // 1: api.CreateResponse
 }
 var file_message_proto_depIdxs = []int32{
-	0, // 0: api.MessageService.Create:input_type -> api.CreateRequest
-	1, // 1: api.MessageService.Create:output_type -> api.CreateResponse
+	0, // 0: api.Message.Create:input_type -> api.CreateRequest
+	1, // 1: api.Message.Create:output_type -> api.CreateResponse
 	1, // [1:2] is the sub-list for method output_type
 	0, // [0:1] is the sub-list for method input_type
 	0, // [0:0] is the sub-list for extension type_name

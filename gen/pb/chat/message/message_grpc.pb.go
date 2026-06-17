@@ -19,101 +19,101 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	MessageService_Create_FullMethodName = "/api.MessageService/Create"
+	Message_Create_FullMethodName = "/api.Message/Create"
 )
 
-// MessageServiceClient is the client API for MessageService service.
+// MessageClient is the client API for Message service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
-type MessageServiceClient interface {
+type MessageClient interface {
 	Create(ctx context.Context, in *CreateRequest, opts ...grpc.CallOption) (*CreateResponse, error)
 }
 
-type messageServiceClient struct {
+type messageClient struct {
 	cc grpc.ClientConnInterface
 }
 
-func NewMessageServiceClient(cc grpc.ClientConnInterface) MessageServiceClient {
-	return &messageServiceClient{cc}
+func NewMessageClient(cc grpc.ClientConnInterface) MessageClient {
+	return &messageClient{cc}
 }
 
-func (c *messageServiceClient) Create(ctx context.Context, in *CreateRequest, opts ...grpc.CallOption) (*CreateResponse, error) {
+func (c *messageClient) Create(ctx context.Context, in *CreateRequest, opts ...grpc.CallOption) (*CreateResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(CreateResponse)
-	err := c.cc.Invoke(ctx, MessageService_Create_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, Message_Create_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-// MessageServiceServer is the server API for MessageService service.
-// All implementations must embed UnimplementedMessageServiceServer
+// MessageServer is the server API for Message service.
+// All implementations must embed UnimplementedMessageServer
 // for forward compatibility.
-type MessageServiceServer interface {
+type MessageServer interface {
 	Create(context.Context, *CreateRequest) (*CreateResponse, error)
-	mustEmbedUnimplementedMessageServiceServer()
+	mustEmbedUnimplementedMessageServer()
 }
 
-// UnimplementedMessageServiceServer must be embedded to have
+// UnimplementedMessageServer must be embedded to have
 // forward compatible implementations.
 //
 // NOTE: this should be embedded by value instead of pointer to avoid a nil
 // pointer dereference when methods are called.
-type UnimplementedMessageServiceServer struct{}
+type UnimplementedMessageServer struct{}
 
-func (UnimplementedMessageServiceServer) Create(context.Context, *CreateRequest) (*CreateResponse, error) {
+func (UnimplementedMessageServer) Create(context.Context, *CreateRequest) (*CreateResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method Create not implemented")
 }
-func (UnimplementedMessageServiceServer) mustEmbedUnimplementedMessageServiceServer() {}
-func (UnimplementedMessageServiceServer) testEmbeddedByValue()                        {}
+func (UnimplementedMessageServer) mustEmbedUnimplementedMessageServer() {}
+func (UnimplementedMessageServer) testEmbeddedByValue()                 {}
 
-// UnsafeMessageServiceServer may be embedded to opt out of forward compatibility for this service.
-// Use of this interface is not recommended, as added methods to MessageServiceServer will
+// UnsafeMessageServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to MessageServer will
 // result in compilation errors.
-type UnsafeMessageServiceServer interface {
-	mustEmbedUnimplementedMessageServiceServer()
+type UnsafeMessageServer interface {
+	mustEmbedUnimplementedMessageServer()
 }
 
-func RegisterMessageServiceServer(s grpc.ServiceRegistrar, srv MessageServiceServer) {
-	// If the following call panics, it indicates UnimplementedMessageServiceServer was
+func RegisterMessageServer(s grpc.ServiceRegistrar, srv MessageServer) {
+	// If the following call panics, it indicates UnimplementedMessageServer was
 	// embedded by pointer and is nil.  This will cause panics if an
 	// unimplemented method is ever invoked, so we test this at initialization
 	// time to prevent it from happening at runtime later due to I/O.
 	if t, ok := srv.(interface{ testEmbeddedByValue() }); ok {
 		t.testEmbeddedByValue()
 	}
-	s.RegisterService(&MessageService_ServiceDesc, srv)
+	s.RegisterService(&Message_ServiceDesc, srv)
 }
 
-func _MessageService_Create_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _Message_Create_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(CreateRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(MessageServiceServer).Create(ctx, in)
+		return srv.(MessageServer).Create(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: MessageService_Create_FullMethodName,
+		FullMethod: Message_Create_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(MessageServiceServer).Create(ctx, req.(*CreateRequest))
+		return srv.(MessageServer).Create(ctx, req.(*CreateRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-// MessageService_ServiceDesc is the grpc.ServiceDesc for MessageService service.
+// Message_ServiceDesc is the grpc.ServiceDesc for Message service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
-var MessageService_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "api.MessageService",
-	HandlerType: (*MessageServiceServer)(nil),
+var Message_ServiceDesc = grpc.ServiceDesc{
+	ServiceName: "api.Message",
+	HandlerType: (*MessageServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
 			MethodName: "Create",
-			Handler:    _MessageService_Create_Handler,
+			Handler:    _Message_Create_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
