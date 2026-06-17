@@ -1,0 +1,30 @@
+# Binaries and build output
+bin/
+build/
+dist/
+*.exe
+*.test
+*.out
+
+# Go coverage
+coverage.out
+coverage.html
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+.Spotlight-V100
+.Trashes
+
+# IDE/editor
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Env files
+.env
+.env.*
+!.env.example
