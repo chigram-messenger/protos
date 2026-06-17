@@ -330,7 +330,7 @@ var File_chat_proto protoreflect.FileDescriptor
 const file_chat_proto_rawDesc = "" +
 	"\n" +
 	"\n" +
-	"chat.proto\x12\x03api\"%\n" +
+	"chat.proto\x12\bapi.chat\"%\n" +
 	"\n" +
 	"GetRequest\x12\x17\n" +
 	"\auser_id\x18\x01 \x03(\x03R\x06userId\"a\n" +
@@ -338,22 +338,22 @@ const file_chat_proto_rawDesc = "" +
 	"\tid_sender\x18\x01 \x01(\x03R\bidSender\x12\x1f\n" +
 	"\vname_sender\x18\x02 \x01(\tR\n" +
 	"nameSender\x12\x18\n" +
-	"\amessage\x18\x03 \x01(\tR\amessage\"o\n" +
+	"\amessage\x18\x03 \x01(\tR\amessage\"t\n" +
 	"\vGetResponse\x12\x17\n" +
 	"\ais_chat\x18\x01 \x01(\bR\x06isChat\x12\x0e\n" +
-	"\x02id\x18\x02 \x01(\x03R\x02id\x127\n" +
-	"\x10history_messages\x18\x03 \x03(\v2\f.api.MessageR\x0fhistoryMessages\",\n" +
+	"\x02id\x18\x02 \x01(\x03R\x02id\x12<\n" +
+	"\x10history_messages\x18\x03 \x03(\v2\x11.api.chat.MessageR\x0fhistoryMessages\",\n" +
 	"\x11GetAllByIDRequest\x12\x17\n" +
 	"\auser_id\x18\x01 \x01(\x03R\x06userId\"@\n" +
 	"\bChatInfo\x12\x17\n" +
 	"\achat_id\x18\x01 \x01(\x03R\x06chatId\x12\x1b\n" +
-	"\tchat_name\x18\x02 \x01(\tR\bchatName\"9\n" +
-	"\x12GetAllByIDResponse\x12#\n" +
-	"\x05chats\x18\x01 \x03(\v2\r.api.ChatInfoR\x05chats2o\n" +
-	"\x04Chat\x12(\n" +
-	"\x03Get\x12\x0f.api.GetRequest\x1a\x10.api.GetResponse\x12=\n" +
+	"\tchat_name\x18\x02 \x01(\tR\bchatName\">\n" +
+	"\x12GetAllByIDResponse\x12(\n" +
+	"\x05chats\x18\x01 \x03(\v2\x12.api.chat.ChatInfoR\x05chats2\x83\x01\n" +
+	"\x04Chat\x122\n" +
+	"\x03Get\x12\x14.api.chat.GetRequest\x1a\x15.api.chat.GetResponse\x12G\n" +
 	"\n" +
-	"GetAllByID\x12\x16.api.GetAllByIDRequest\x1a\x17.api.GetAllByIDResponseB\x15Z\x13api/proto/chat/chatb\x06proto3"
+	"GetAllByID\x12\x1b.api.chat.GetAllByIDRequest\x1a\x1c.api.chat.GetAllByIDResponseB\x15Z\x13api/proto/chat/chatb\x06proto3"
 
 var (
 	file_chat_proto_rawDescOnce sync.Once
@@ -369,20 +369,20 @@ func file_chat_proto_rawDescGZIP() []byte {
 
 var file_chat_proto_msgTypes = make([]protoimpl.MessageInfo, 6)
 var file_chat_proto_goTypes = []any{
-	(*GetRequest)(nil),         // 0: api.GetRequest
-	(*Message)(nil),            // 1: api.Message
-	(*GetResponse)(nil),        // 2: api.GetResponse
-	(*GetAllByIDRequest)(nil),  // 3: api.GetAllByIDRequest
-	(*ChatInfo)(nil),           // 4: api.ChatInfo
-	(*GetAllByIDResponse)(nil), // 5: api.GetAllByIDResponse
+	(*GetRequest)(nil),         // 0: api.chat.GetRequest
+	(*Message)(nil),            // 1: api.chat.Message
+	(*GetResponse)(nil),        // 2: api.chat.GetResponse
+	(*GetAllByIDRequest)(nil),  // 3: api.chat.GetAllByIDRequest
+	(*ChatInfo)(nil),           // 4: api.chat.ChatInfo
+	(*GetAllByIDResponse)(nil), // 5: api.chat.GetAllByIDResponse
 }
 var file_chat_proto_depIdxs = []int32{
-	1, // 0: api.GetResponse.history_messages:type_name -> api.Message
-	4, // 1: api.GetAllByIDResponse.chats:type_name -> api.ChatInfo
-	0, // 2: api.Chat.Get:input_type -> api.GetRequest
-	3, // 3: api.Chat.GetAllByID:input_type -> api.GetAllByIDRequest
-	2, // 4: api.Chat.Get:output_type -> api.GetResponse
-	5, // 5: api.Chat.GetAllByID:output_type -> api.GetAllByIDResponse
+	1, // 0: api.chat.GetResponse.history_messages:type_name -> api.chat.Message
+	4, // 1: api.chat.GetAllByIDResponse.chats:type_name -> api.chat.ChatInfo
+	0, // 2: api.chat.Chat.Get:input_type -> api.chat.GetRequest
+	3, // 3: api.chat.Chat.GetAllByID:input_type -> api.chat.GetAllByIDRequest
+	2, // 4: api.chat.Chat.Get:output_type -> api.chat.GetResponse
+	5, // 5: api.chat.Chat.GetAllByID:output_type -> api.chat.GetAllByIDResponse
 	4, // [4:6] is the sub-list for method output_type
 	2, // [2:4] is the sub-list for method input_type
 	2, // [2:2] is the sub-list for extension type_name

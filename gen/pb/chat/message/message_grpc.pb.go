@@ -19,7 +19,7 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	Message_Create_FullMethodName = "/api.Message/Create"
+	Message_Create_FullMethodName = "/api.message.Message/Create"
 )
 
 // MessageClient is the client API for Message service.
@@ -108,7 +108,7 @@ func _Message_Create_Handler(srv interface{}, ctx context.Context, dec func(inte
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
 var Message_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "api.Message",
+	ServiceName: "api.message.Message",
 	HandlerType: (*MessageServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{

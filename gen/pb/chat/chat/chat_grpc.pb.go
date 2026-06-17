@@ -19,8 +19,8 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	Chat_Get_FullMethodName        = "/api.Chat/Get"
-	Chat_GetAllByID_FullMethodName = "/api.Chat/GetAllByID"
+	Chat_Get_FullMethodName        = "/api.chat.Chat/Get"
+	Chat_GetAllByID_FullMethodName = "/api.chat.Chat/GetAllByID"
 )
 
 // ChatClient is the client API for Chat service.
@@ -142,7 +142,7 @@ func _Chat_GetAllByID_Handler(srv interface{}, ctx context.Context, dec func(int
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
 var Chat_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "api.Chat",
+	ServiceName: "api.chat.Chat",
 	HandlerType: (*ChatServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{

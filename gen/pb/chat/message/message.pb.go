@@ -145,7 +145,7 @@ var File_message_proto protoreflect.FileDescriptor
 
 const file_message_proto_rawDesc = "" +
 	"\n" +
-	"\rmessage.proto\x12\x03api\"\x99\x01\n" +
+	"\rmessage.proto\x12\vapi.message\"\x99\x01\n" +
 	"\rCreateRequest\x12\x17\n" +
 	"\ais_chat\x18\x01 \x01(\bR\x06isChat\x12\x17\n" +
 	"\aid_chat\x18\x02 \x01(\x03R\x06idChat\x12\x1b\n" +
@@ -154,9 +154,9 @@ const file_message_proto_rawDesc = "" +
 	"idReceiver\x12\x18\n" +
 	"\amessage\x18\x05 \x01(\tR\amessage\"(\n" +
 	"\x0eCreateResponse\x12\x16\n" +
-	"\x06status\x18\x01 \x01(\bR\x06status2<\n" +
-	"\aMessage\x121\n" +
-	"\x06Create\x12\x12.api.CreateRequest\x1a\x13.api.CreateResponseB\x18Z\x16api/proto/chat/messageb\x06proto3"
+	"\x06status\x18\x01 \x01(\bR\x06status2L\n" +
+	"\aMessage\x12A\n" +
+	"\x06Create\x12\x1a.api.message.CreateRequest\x1a\x1b.api.message.CreateResponseB\x18Z\x16api/proto/chat/messageb\x06proto3"
 
 var (
 	file_message_proto_rawDescOnce sync.Once
@@ -172,12 +172,12 @@ func file_message_proto_rawDescGZIP() []byte {
 
 var file_message_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
 var file_message_proto_goTypes = []any{
-	(*CreateRequest)(nil),  // 0: api.CreateRequest
-	(*CreateResponse)(nil), // 1: api.CreateResponse
+	(*CreateRequest)(nil),  // 0: api.message.CreateRequest
+	(*CreateResponse)(nil), // 1: api.message.CreateResponse
 }
 var file_message_proto_depIdxs = []int32{
-	0, // 0: api.Message.Create:input_type -> api.CreateRequest
-	1, // 1: api.Message.Create:output_type -> api.CreateResponse
+	0, // 0: api.message.Message.Create:input_type -> api.message.CreateRequest
+	1, // 1: api.message.Message.Create:output_type -> api.message.CreateResponse
 	1, // [1:2] is the sub-list for method output_type
 	0, // [0:1] is the sub-list for method input_type
 	0, // [0:0] is the sub-list for extension type_name
