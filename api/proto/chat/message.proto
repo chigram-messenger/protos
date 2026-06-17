@@ -1,0 +1,17 @@
+syntax = "proto3";
+package api;
+option go_package = "api/proto/chat";
+service MessageService{
+  rpc Create(CreateRequest) returns (CreateResponse);
+}
+message CreateRequest{
+  bool is_chat = 1;
+  int64 id_chat = 2;
+  int64 id_sender = 3;
+  int64 id_receiver = 4;
+  string message = 5;
+
+}
+message CreateResponse{
+  bool status = 1;
+}

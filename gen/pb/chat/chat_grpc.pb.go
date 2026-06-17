@@ -19,101 +19,139 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	Chat_Create_FullMethodName = "/api.Chat/Create"
+	ChatService_GetChat_FullMethodName         = "/api.ChatService/GetChat"
+	ChatService_GetAllChatsByID_FullMethodName = "/api.ChatService/GetAllChatsByID"
 )
 
-// ChatClient is the client API for Chat service.
+// ChatServiceClient is the client API for ChatService service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
-type ChatClient interface {
-	Create(ctx context.Context, in *CreateRequest, opts ...grpc.CallOption) (*CreateResponse, error)
+type ChatServiceClient interface {
+	GetChat(ctx context.Context, in *GetChatRequest, opts ...grpc.CallOption) (*GetChatResponse, error)
+	GetAllChatsByID(ctx context.Context, in *GetAllChatsRequest, opts ...grpc.CallOption) (*GetAllChatsResponse, error)
 }
 
-type chatClient struct {
+type chatServiceClient struct {
 	cc grpc.ClientConnInterface
 }
 
-func NewChatClient(cc grpc.ClientConnInterface) ChatClient {
-	return &chatClient{cc}
+func NewChatServiceClient(cc grpc.ClientConnInterface) ChatServiceClient {
+	return &chatServiceClient{cc}
 }
 
-func (c *chatClient) Create(ctx context.Context, in *CreateRequest, opts ...grpc.CallOption) (*CreateResponse, error) {
+func (c *chatServiceClient) GetChat(ctx context.Context, in *GetChatRequest, opts ...grpc.CallOption) (*GetChatResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(CreateResponse)
-	err := c.cc.Invoke(ctx, Chat_Create_FullMethodName, in, out, cOpts...)
+	out := new(GetChatResponse)
+	err := c.cc.Invoke(ctx, ChatService_GetChat_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-// ChatServer is the server API for Chat service.
-// All implementations must embed UnimplementedChatServer
-// for forward compatibility.
-type ChatServer interface {
-	Create(context.Context, *CreateRequest) (*CreateResponse, error)
-	mustEmbedUnimplementedChatServer()
+func (c *chatServiceClient) GetAllChatsByID(ctx context.Context, in *GetAllChatsRequest, opts ...grpc.CallOption) (*GetAllChatsResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetAllChatsResponse)
+	err := c.cc.Invoke(ctx, ChatService_GetAllChatsByID_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
 }
 
-// UnimplementedChatServer must be embedded to have
+// ChatServiceServer is the server API for ChatService service.
+// All implementations must embed UnimplementedChatServiceServer
+// for forward compatibility.
+type ChatServiceServer interface {
+	GetChat(context.Context, *GetChatRequest) (*GetChatResponse, error)
+	GetAllChatsByID(context.Context, *GetAllChatsRequest) (*GetAllChatsResponse, error)
+	mustEmbedUnimplementedChatServiceServer()
+}
+
+// UnimplementedChatServiceServer must be embedded to have
 // forward compatible implementations.
 //
 // NOTE: this should be embedded by value instead of pointer to avoid a nil
 // pointer dereference when methods are called.
-type UnimplementedChatServer struct{}
+type UnimplementedChatServiceServer struct{}
 
-func (UnimplementedChatServer) Create(context.Context, *CreateRequest) (*CreateResponse, error) {
-	return nil, status.Error(codes.Unimplemented, "method Create not implemented")
+func (UnimplementedChatServiceServer) GetChat(context.Context, *GetChatRequest) (*GetChatResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method GetChat not implemented")
 }
-func (UnimplementedChatServer) mustEmbedUnimplementedChatServer() {}
-func (UnimplementedChatServer) testEmbeddedByValue()              {}
+func (UnimplementedChatServiceServer) GetAllChatsByID(context.Context, *GetAllChatsRequest) (*GetAllChatsResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method GetAllChatsByID not implemented")
+}
+func (UnimplementedChatServiceServer) mustEmbedUnimplementedChatServiceServer() {}
+func (UnimplementedChatServiceServer) testEmbeddedByValue()                     {}
 
-// UnsafeChatServer may be embedded to opt out of forward compatibility for this service.
-// Use of this interface is not recommended, as added methods to ChatServer will
+// UnsafeChatServiceServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to ChatServiceServer will
 // result in compilation errors.
-type UnsafeChatServer interface {
-	mustEmbedUnimplementedChatServer()
+type UnsafeChatServiceServer interface {
+	mustEmbedUnimplementedChatServiceServer()
 }
 
-func RegisterChatServer(s grpc.ServiceRegistrar, srv ChatServer) {
-	// If the following call panics, it indicates UnimplementedChatServer was
+func RegisterChatServiceServer(s grpc.ServiceRegistrar, srv ChatServiceServer) {
+	// If the following call panics, it indicates UnimplementedChatServiceServer was
 	// embedded by pointer and is nil.  This will cause panics if an
 	// unimplemented method is ever invoked, so we test this at initialization
 	// time to prevent it from happening at runtime later due to I/O.
 	if t, ok := srv.(interface{ testEmbeddedByValue() }); ok {
 		t.testEmbeddedByValue()
 	}
-	s.RegisterService(&Chat_ServiceDesc, srv)
+	s.RegisterService(&ChatService_ServiceDesc, srv)
 }
 
-func _Chat_Create_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(CreateRequest)
+func _ChatService_GetChat_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetChatRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(ChatServer).Create(ctx, in)
+		return srv.(ChatServiceServer).GetChat(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: Chat_Create_FullMethodName,
+		FullMethod: ChatService_GetChat_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ChatServer).Create(ctx, req.(*CreateRequest))
+		return srv.(ChatServiceServer).GetChat(ctx, req.(*GetChatRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-// Chat_ServiceDesc is the grpc.ServiceDesc for Chat service.
+func _ChatService_GetAllChatsByID_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetAllChatsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ChatServiceServer).GetAllChatsByID(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: ChatService_GetAllChatsByID_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ChatServiceServer).GetAllChatsByID(ctx, req.(*GetAllChatsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+// ChatService_ServiceDesc is the grpc.ServiceDesc for ChatService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
-var Chat_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "api.Chat",
-	HandlerType: (*ChatServer)(nil),
+var ChatService_ServiceDesc = grpc.ServiceDesc{
+	ServiceName: "api.ChatService",
+	HandlerType: (*ChatServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "Create",
-			Handler:    _Chat_Create_Handler,
+			MethodName: "GetChat",
+			Handler:    _ChatService_GetChat_Handler,
+		},
+		{
+			MethodName: "GetAllChatsByID",
+			Handler:    _ChatService_GetAllChatsByID_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
