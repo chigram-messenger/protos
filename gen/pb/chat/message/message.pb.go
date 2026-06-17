@@ -4,7 +4,7 @@
 // 	protoc        v7.35.0
 // source: message.proto
 
-package chat
+package message
 
 import (
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
@@ -156,7 +156,7 @@ const file_message_proto_rawDesc = "" +
 	"\x0eCreateResponse\x12\x16\n" +
 	"\x06status\x18\x01 \x01(\bR\x06status2C\n" +
 	"\x0eMessageService\x121\n" +
-	"\x06Create\x12\x12.api.CreateRequest\x1a\x13.api.CreateResponseB\x10Z\x0eapi/proto/chatb\x06proto3"
+	"\x06Create\x12\x12.api.CreateRequest\x1a\x13.api.CreateResponseB\x18Z\x16api/proto/chat/messageb\x06proto3"
 
 var (
 	file_message_proto_rawDescOnce sync.Once

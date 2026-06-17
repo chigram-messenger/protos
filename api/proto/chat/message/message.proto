@@ -1,6 +1,6 @@
 syntax = "proto3";
 package api;
-option go_package = "api/proto/chat";
+option go_package = "api/proto/chat/message";
 service MessageService{
   rpc Create(CreateRequest) returns (CreateResponse);
 }

@@ -351,7 +351,7 @@ const file_chat_proto_rawDesc = "" +
 	"\x05chats\x18\x01 \x03(\v2\r.api.ChatInfoR\x05chats2\x89\x01\n" +
 	"\vChatService\x124\n" +
 	"\aGetChat\x12\x13.api.GetChatRequest\x1a\x14.api.GetChatResponse\x12D\n" +
-	"\x0fGetAllChatsByID\x12\x17.api.GetAllChatsRequest\x1a\x18.api.GetAllChatsResponseB\x10Z\x0eapi/proto/chatb\x06proto3"
+	"\x0fGetAllChatsByID\x12\x17.api.GetAllChatsRequest\x1a\x18.api.GetAllChatsResponseB\x15Z\x13api/proto/chat/chatb\x06proto3"
 
 var (
 	file_chat_proto_rawDescOnce sync.Once
