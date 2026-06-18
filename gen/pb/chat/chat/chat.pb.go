@@ -232,7 +232,7 @@ func (x *GetAllByIDRequest) GetUserId() int64 {
 type ChatInfo struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	ChatId        int64                  `protobuf:"varint,1,opt,name=chat_id,json=chatId,proto3" json:"chat_id,omitempty"`
-	ChatName      string                 `protobuf:"bytes,2,opt,name=chat_name,json=chatName,proto3" json:"chat_name,omitempty"`
+	CompanionId   int64                  `protobuf:"varint,2,opt,name=companion_id,json=companionId,proto3" json:"companion_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -274,11 +274,11 @@ func (x *ChatInfo) GetChatId() int64 {
 	return 0
 }
 
-func (x *ChatInfo) GetChatName() string {
+func (x *ChatInfo) GetCompanionId() int64 {
 	if x != nil {
-		return x.ChatName
+		return x.CompanionId
 	}
-	return ""
+	return 0
 }
 
 type GetAllByIDResponse struct {
@@ -344,10 +344,10 @@ const file_chat_proto_rawDesc = "" +
 	"\x02id\x18\x02 \x01(\x03R\x02id\x12<\n" +
 	"\x10history_messages\x18\x03 \x03(\v2\x11.api.chat.MessageR\x0fhistoryMessages\",\n" +
 	"\x11GetAllByIDRequest\x12\x17\n" +
-	"\auser_id\x18\x01 \x01(\x03R\x06userId\"@\n" +
+	"\auser_id\x18\x01 \x01(\x03R\x06userId\"F\n" +
 	"\bChatInfo\x12\x17\n" +
-	"\achat_id\x18\x01 \x01(\x03R\x06chatId\x12\x1b\n" +
-	"\tchat_name\x18\x02 \x01(\tR\bchatName\">\n" +
+	"\achat_id\x18\x01 \x01(\x03R\x06chatId\x12!\n" +
+	"\fcompanion_id\x18\x02 \x01(\x03R\vcompanionId\">\n" +
 	"\x12GetAllByIDResponse\x12(\n" +
 	"\x05chats\x18\x01 \x03(\v2\x12.api.chat.ChatInfoR\x05chats2\x83\x01\n" +
 	"\x04Chat\x122\n" +
