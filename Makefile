@@ -13,7 +13,7 @@ proto_chat_message:
 proto_chat: proto_chat_chat proto_chat_message
 proto_auth:
 	@rm -rf /gen/pb/auth/*
-	protoc -I api/proto/auth \
+	protoc -I api/proto/auth -I api/proto \
       --go_out=./gen/pb/auth --go_opt=paths=source_relative \
       --go-grpc_out=./gen/pb/auth --go-grpc_opt=paths=source_relative \
       auth.proto
